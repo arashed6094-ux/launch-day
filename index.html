@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>يوم الانطلاق – ١٤ سبتمبر ٢٠٢٧</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f6f1e6; --card:#ffffff; --ink:#14213d; --muted:#5b6478; --gold:#b8862b; --gold2:#e0b252;
+  --line:#e4dccb; --track:#e9e2d2; --done:#2f7d5b;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0c1426; --card:#14203a; --ink:#f3ecdb; --muted:#9aa6c0; --gold:#e0b252; --gold2:#f3d58a;
+    --line:#26375c; --track:#1d2c4d; --done:#5cc79a;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0c1426; --card:#14203a; --ink:#f3ecdb; --muted:#9aa6c0; --gold:#e0b252; --gold2:#f3d58a;
+  --line:#26375c; --track:#1d2c4d; --done:#5cc79a;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cairo","Segoe UI",Tahoma,Arial,sans-serif;line-height:1.6;min-height:100vh}
+.wrap{max-width:760px;margin:0 auto;padding:28px 16px 40px}
+header{text-align:center;margin-bottom:20px}
+.scale{font-size:44px;line-height:1}
+h1{margin:6px 0 2px;font-size:clamp(28px,7vw,44px);font-weight:900;color:var(--gold)}
+.sub{color:var(--muted);font-size:16px;margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 18px;margin-bottom:16px;box-shadow:0 6px 24px rgba(20,33,61,.07)}
+.hero{text-align:center}
+.big{font-size:clamp(72px,24vw,132px);font-weight:900;line-height:1;color:var(--ink)}
+.big small{display:block;font-size:20px;font-weight:600;color:var(--muted);margin-top:4px}
+.units{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.u{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 4px}
+.u b{display:block;font-size:clamp(22px,6vw,32px);font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
+.u span{font-size:13px;color:var(--muted)}
+h2{font-size:19px;margin:0 0 4px}
+.pct{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.pct strong{font-size:34px;font-weight:900;color:var(--gold);font-variant-numeric:tabular-nums}
+.pct span{color:var(--muted);font-size:15px}
+.bar{position:relative;height:22px;border-radius:99px;background:var(--track);margin:18px 0 12px;overflow:visible}
+.fill{position:absolute;inset-block:0;inset-inline-start:0;width:0;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .6s ease}
+.mk{position:absolute;top:-5px;width:2px;height:32px;background:var(--ink);opacity:.35}
+.mk i{position:absolute;top:34px;font-style:normal;font-size:12px;color:var(--muted);transform:translateX(50%);white-space:nowrap}
+.mk:last-child{opacity:0}
+.mk:last-child i{opacity:1;transform:none}
+.ms{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:34px}
+@media(min-width:560px){.ms{grid-template-columns:repeat(4,1fr)}}
+.m{border:1px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center;background:var(--bg)}
+.m .p{font-size:22px;font-weight:900;color:var(--gold)}
+.m .d{font-size:14px;font-weight:600}
+.m .s{font-size:12px;color:var(--muted);margin-top:2px}
+.m.done{border-color:var(--done)}.m.done .p{color:var(--done)}
+.m.next{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold) inset}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:560px){.stats{grid-template-columns:repeat(3,1fr)}}
+.st{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.st b{display:block;font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.st span{font-size:13px;color:var(--muted)}
+.msg{text-align:center;font-size:18px;font-weight:600;padding:6px 8px}
+.btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:6px}
+button{font:inherit;font-weight:700;border:0;border-radius:99px;padding:10px 20px;cursor:pointer;background:var(--gold);color:#fff}
+button.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.party{display:none;text-align:center;font-size:28px;font-weight:900;color:var(--gold);padding:20px 0}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="scale">⚖️</div>
+    <h1>يوم الانطلاق</h1>
+    <p class="sub">١٤ سبتمبر ٢٠٢٧ — من المنصّة إلى ساحة المحاماة</p>
+  </header>
+
+  <section class="card hero">
+    <div id="party" class="party">🎉 انطلقنا! مبروك البداية الجديدة 🎉</div>
+    <div class="big"><span id="days">--</span><small>يوم باقي على الانطلاق</small></div>
+    <div class="units">
+      <div class="u"><b id="h">--</b><span>ساعة</span></div>
+      <div class="u"><b id="m">--</b><span>دقيقة</span></div>
+      <div class="u"><b id="s">--</b><span>ثانية</span></div>
+      <div class="u"><b id="w">--</b><span>أسبوع</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>رحلة آخر سنة في الخدمة</h2>
+    <div class="pct"><strong id="pct">0%</strong><span>انقضى من آخر سنة عمل • <b id="rem">0%</b> فاضل</span></div>
+    <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+    <div class="ms" id="ms"></div>
+  </section>
+
+  <section class="card">
+    <h2>أرقام الرحلة</h2>
+    <div class="stats">
+      <div class="st"><b id="el">--</b><span>يوم عدّى من آخر سنة</span></div>
+      <div class="st"><b id="fri">--</b><span>جمعة فاضلة</span></div>
+      <div class="st"><b id="wk">--</b><span>يوم عمل فاضل (٦ أيام في الشهر)</span></div>
+      <div class="st"><b id="hrs">--</b><span>ساعة فاضلة</span></div>
+      <div class="st"><b id="mon">--</b><span>شهور تقريباً</span></div>
+      <div class="st"><b id="sun">--</b><span>مرّات شروق فاضلة</span></div>
+    </div>
+  </section>
+
+  <section class="card msg" id="note"></section>
+
+  <div class="btns">
+    <button id="share">📤 شارك الموقع</button>
+    <button class="alt" id="theme">🌓 الوضع</button>
+  </div>
+  <footer>معمول بحب ❤️ لأعظم قاضي ومحامي قادم</footer>
+</div>
+
+<script>
+(function(){
+  var START=new Date(2026,8,14,0,0,0), END=new Date(2027,8,14,0,0,0), TOTAL=END-START, DAY=86400000;
+  var $=function(i){return document.getElementById(i)};
+  var ar=function(n,d){return Number(n).toLocaleString('ar-EG',{minimumFractionDigits:d||0,maximumFractionDigits:d||0})};
+  var fmt=function(d){return d.toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'})};
+  var pad=function(n){return ar(n<10?'0'+n:n)};
+  var MS=[25,50,75,100].map(function(p){return {p:p,date:new Date(START.getTime()+TOTAL*p/100)}});
+
+  // build bar markers + cards
+  var bar=$('bar'), ms=$('ms');
+  MS.forEach(function(x){
+    var mk=document.createElement('div'); mk.className='mk'; mk.style.insetInlineStart=x.p+'%';
+    mk.innerHTML='<i>'+ar(x.p)+'٪</i>'; bar.appendChild(mk);
+    var c=document.createElement('div'); c.className='m'; c.id='m'+x.p;
+    c.innerHTML='<div class="p">'+ar(x.p)+'٪</div><div class="d">'+fmt(x.date)+'</div><div class="s"></div>';
+    ms.appendChild(c);
+  });
+
+  function workDaysLeft(from){
+    var t=0,y=from.getFullYear(),mo=from.getMonth();
+    for(;;){
+      var ms=new Date(y,mo,1), me=new Date(y,mo+1,1);
+      if(ms>=END)break;
+      var a=Math.max(ms,from), b=Math.min(me,END);
+      if(b>a) t+=6*(b-a)/(me-ms);
+      mo++;
+    }
+    return Math.ceil(t-1e-9);
+  }
+  function countDays(from,to,dow){ // count days with weekday dow (or array) between from(incl) and to(excl)
+    var n=0,d=new Date(from.getFullYear(),from.getMonth(),from.getDate());
+    var set=Array.isArray(dow)?dow:[dow];
+    while(d<to){ if(set.indexOf(d.getDay())>-1)n++; d.setDate(d.getDate()+1); }
+    return n;
+  }
+  var notes=[
+    'كل يوم بيعدّي هو خطوة أقرب لحرية الوقت 🌅',
+    'سنين من العدل والأحكام… وجاي فصل جديد من الترافع ⚖️',
+    'القاضي اللي حكم بالحق، هيدافع بالحق 💼',
+    'يوم الانطلاق أقرب مما تتخيل ✨'
+  ];
+
+  function tick(){
+    var now=new Date(), left=END-now, done=left<=0;
+    var pct=Math.max(0,Math.min(100,(now-START)/TOTAL*100));
+    var L=Math.max(0,left);
+    var d=Math.floor(L/DAY), h=Math.floor(L%DAY/3600000), mi=Math.floor(L%3600000/60000), s=Math.floor(L%60000/1000);
+    $('days').textContent=ar(d); $('h').textContent=pad(h); $('m').textContent=pad(mi); $('s').textContent=pad(s);
+    $('w').textContent=ar(Math.floor(d/7));
+    $('pct').textContent=ar(pct,2)+'٪'; $('rem').textContent=ar(100-pct,2)+'٪';
+    $('fill').style.width=pct+'%';
+    $('el').textContent=ar(Math.max(0,Math.min(365,Math.floor((now-START)/DAY))));
+    $('hrs').textContent=ar(Math.floor(L/3600000));
+    $('mon').textContent=ar(L/DAY/30.44,1);
+    $('sun').textContent=ar(Math.ceil(L/DAY));
+    var from=now<START?START:now;
+    $('fri').textContent=ar(done?0:countDays(from,END,5));
+    $('wk').textContent=ar(done?0:workDaysLeft(from));
+    var nextSet=false;
+    MS.forEach(function(x){
+      var c=$('m'+x.p), st=c.querySelector('.s'), diff=x.date-now;
+      c.className='m';
+      if(diff<=0){c.classList.add('done');st.textContent='✅ تحققت';}
+      else{
+        st.textContent='بعد '+ar(Math.ceil(diff/DAY))+' يوم';
+        if(!nextSet){c.classList.add('next');nextSet=true;}
+      }
+    });
+    $('party').style.display=done?'block':'none';
+    $('note').textContent=notes[Math.floor(now/ (DAY/2))%notes.length];
+  }
+  tick(); setInterval(tick,1000);
+
+  $('share').onclick=function(){
+    var url=location.href, data={title:'يوم الانطلاق ⚖️',text:'العد التنازلي ليوم الانطلاق – ١٤ سبتمبر ٢٠٢٧',url:url};
+    try{
+      if(navigator.share){navigator.share(data);}
+      else{navigator.clipboard.writeText(url);$('share').textContent='✅ اتنسخ اللينك';}
+    }catch(e){$('share').textContent='انسخ اللينك من شريط العنوان';}
+  };
+  $('theme').onclick=function(){
+    var r=document.documentElement, cur=r.getAttribute('data-theme');
+    var isDark=cur?cur==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+    r.setAttribute('data-theme',isDark?'light':'dark');
+  };
+})();
+</script>
+</body>
+</html>
