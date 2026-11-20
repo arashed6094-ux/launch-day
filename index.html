@@ -38,7 +38,9 @@ h1{margin:6px 0 2px;font-size:clamp(28px,7vw,44px);font-weight:900;color:var(--g
 .hero{text-align:center}
 .big{font-size:clamp(72px,24vw,132px);font-weight:900;line-height:1;color:var(--ink)}
 .big small{display:block;font-size:20px;font-weight:600;color:var(--muted);margin-top:4px}
-.units{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px}
+.units{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
+.weeks{margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 8px;font-size:17px;color:var(--muted)}
+.weeks b{font-size:clamp(22px,6vw,32px);font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;margin-inline-end:6px}
 .u{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 4px}
 .u b{display:block;font-size:clamp(22px,6vw,32px);font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums}
 .u span{font-size:13px;color:var(--muted)}
@@ -85,16 +87,16 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
     <div id="party" class="party">🎉 انطلقنا! مبروك البداية الجديدة 🎉</div>
     <div class="big"><span id="days">--</span><small>يوم باقي على الانطلاق</small></div>
     <div class="units">
-      <div class="u"><b id="h">--</b><span>ساعة</span></div>
-      <div class="u"><b id="m">--</b><span>دقيقة</span></div>
       <div class="u"><b id="s">--</b><span>ثانية</span></div>
-      <div class="u"><b id="w">--</b><span>أسبوع</span></div>
+      <div class="u"><b id="m">--</b><span>دقيقة</span></div>
+      <div class="u"><b id="h">--</b><span>ساعة</span></div>
     </div>
+    <div class="weeks"><b id="w">--</b><span>أسبوع باقي</span></div>
   </section>
 
   <section class="card">
     <h2>رحلة آخر سنة في الخدمة</h2>
-    <div class="pct"><strong id="pct">0%</strong><span>انقضى من آخر سنة عمل • <b id="rem">0%</b> فاضل</span></div>
+    <div class="pct"><strong id="pct">0%</strong><span>متبقي <b id="rem">0%</b></span></div>
     <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
     <div class="ms" id="ms"></div>
   </section>
@@ -110,8 +112,6 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
       <div class="st"><b id="sun">--</b><span>مرّات شروق فاضلة</span></div>
     </div>
   </section>
-
-  <section class="card msg" id="note"></section>
 
   <div class="btns">
     <button id="share">📤 شارك الموقع</button>
@@ -156,12 +156,6 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
     while(d<to){ if(set.indexOf(d.getDay())>-1)n++; d.setDate(d.getDate()+1); }
     return n;
   }
-  var notes=[
-    'كل يوم بيعدّي هو خطوة أقرب لحرية الوقت 🌅',
-    'سنين من العدل والأحكام… وجاي فصل جديد من الترافع ⚖️',
-    'القاضي اللي حكم بالحق، هيدافع بالحق 💼',
-    'يوم الانطلاق أقرب مما تتخيل ✨'
-  ];
 
   function tick(){
     var now=new Date(), left=END-now, done=left<=0;
@@ -190,7 +184,6 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
       }
     });
     $('party').style.display=done?'block':'none';
-    $('note').textContent=notes[Math.floor(now/ (DAY/2))%notes.length];
   }
   tick(); setInterval(tick,1000);
 
