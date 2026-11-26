@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>يوم الانطلاق – ١٤ سبتمبر ٢٠٢٧</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   box-sizing:border-box;
@@ -28,7 +28,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Cairo","Segoe UI",Tahoma,Arial,sans-serif;line-height:1.6;min-height:100vh}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Amiri","Noto Naskh Arabic","Scheherazade New",serif;line-height:1.7;min-height:100vh}
 .wrap{max-width:760px;margin:0 auto;padding:28px 16px 40px}
 header{text-align:center;margin-bottom:20px}
 .scale{font-size:44px;line-height:1}
@@ -54,7 +54,35 @@ h2{font-size:19px;margin:0 0 4px}
 .mk i{position:absolute;top:34px;font-style:normal;font-size:12px;color:var(--muted);transform:translateX(50%);white-space:nowrap}
 .mk:last-child{opacity:0}
 .mk:last-child i{opacity:1;transform:none}
-.ms{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:34px}
+.ms{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:12px}
+.probe{margin-top:36px;padding:10px 12px;border:1px dashed var(--line);border-radius:12px;text-align:center;color:var(--muted);font-size:17px;line-height:1.8}
+.probe b,.detail b{color:var(--gold)}
+.bar{touch-action:pan-y;cursor:pointer}
+.bar::before{content:"";position:absolute;inset:-14px 0}
+.scr{display:none;position:absolute;top:-8px;width:4px;height:38px;border-radius:4px;background:var(--ink);transform:translateX(50%);z-index:3;pointer-events:none}
+.m{cursor:pointer}
+.hint{margin:0 0 12px;color:var(--muted);font-size:16px}
+.cal{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(min-width:560px){.cal{grid-template-columns:repeat(3,1fr)}}
+.mt{font-weight:700;font-size:17px;margin-bottom:4px}
+.g{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.dc{padding:0;aspect-ratio:1;border-radius:6px;background:var(--bg);color:var(--ink);border:1px solid var(--line);font-size:12px;font-weight:400;line-height:1}
+.dc.past{background:var(--gold2);color:#14213d;border-color:transparent}
+.dc.today{background:var(--ink);color:var(--bg);outline:2px solid var(--gold);outline-offset:1px;font-weight:700}
+.dc.star{box-shadow:0 0 0 2px var(--ink) inset;font-weight:700}
+.dc.fin{background:var(--gold);color:#fff;font-size:14px}
+.detail{margin-top:12px;padding:12px;border-radius:12px;background:var(--bg);border:1px solid var(--line);text-align:center;font-size:17px;line-height:1.8;color:var(--muted)}
+.chart{display:flex;flex-direction:column;gap:4px}
+.rw{display:flex;align-items:center;gap:8px;width:100%;padding:6px 8px;border-radius:12px;background:transparent;color:var(--ink);border:1px solid transparent;font-size:16px;font-weight:400;text-align:start}
+.rw.cur{border-color:var(--gold);background:var(--bg)}
+.rn{width:86px;flex:none}
+.rt{flex:1}
+.rt,.rb,.rf{display:block}
+.rb{position:relative;height:16px;border-radius:99px;background:var(--track);overflow:hidden}
+.rf{position:absolute;inset-block:0;inset-inline-start:0;width:0;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.rp{width:42px;flex:none;text-align:end;color:var(--muted);font-size:15px}
+.cf{position:fixed;top:-40px;z-index:99;pointer-events:none;animation:fall 2.8s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
 @media(min-width:560px){.ms{grid-template-columns:repeat(4,1fr)}}
 .m{border:1px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center;background:var(--bg)}
 .m .p{font-size:22px;font-weight:900;color:var(--gold)}
@@ -98,7 +126,22 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
     <h2>رحلة آخر سنة في الخدمة</h2>
     <div class="pct"><strong id="pct">0%</strong><span>متبقي <b id="rem">0%</b></span></div>
     <div class="bar" id="bar"><div class="fill" id="fill"></div></div>
+    <div class="probe" id="probe">اسحب إصبعك على الشريط، أو دوس على أي محطة 👆</div>
     <div class="ms" id="ms"></div>
+  </section>
+
+  <section class="card">
+    <h2>تقويم الرحلة</h2>
+    <p class="hint">كل مربع يوم: المظلل بالذهبي عدّى، والفاضي لسه جاي. دوس على أي يوم تشوف تفاصيله.</p>
+    <div class="cal" id="cal"></div>
+    <div class="detail" id="caldet">دوس على أي يوم 👆</div>
+  </section>
+
+  <section class="card">
+    <h2>الرحلة شهر بشهر</h2>
+    <p class="hint">الشريط بيوضح اللي عدّى من الشهر، والنسبة على الطرف هي إجمالي اللي هيبقى انقضى من السنة في آخره.</p>
+    <div class="chart" id="chart"></div>
+    <div class="detail" id="mdet">دوس على أي شهر 👆</div>
   </section>
 
   <section class="card">
@@ -126,16 +169,93 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
   var $=function(i){return document.getElementById(i)};
   var ar=function(n,d){return Number(n).toLocaleString('ar-EG',{minimumFractionDigits:d||0,maximumFractionDigits:d||0})};
   var fmt=function(d){return d.toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'})};
-  var pad=function(n){return ar(n<10?'0'+n:n)};
+  var pad=function(n){return (n<10?'٠':'')+ar(n)};
   var MS=[25,50,75,100].map(function(p){return {p:p,date:new Date(START.getTime()+TOTAL*p/100)}});
 
+  function dayDiff(a,b){return Math.round((Date.UTC(b.getFullYear(),b.getMonth(),b.getDate())-Date.UTC(a.getFullYear(),a.getMonth(),a.getDate()))/DAY);}
+  function boom(){
+    var e=['🎉','✨','⚖️','🌟','🎊','💛'];
+    for(var i=0;i<36;i++){
+      var s=document.createElement('span'); s.className='cf'; s.textContent=e[i%e.length];
+      s.style.left=(Math.random()*96)+'vw'; s.style.animationDelay=(Math.random()*.8)+'s'; s.style.fontSize=(16+Math.random()*18)+'px';
+      document.body.appendChild(s);
+      setTimeout((function(n){return function(){n.remove();};})(s),3800);
+    }
+  }
   // build bar markers + cards
   var bar=$('bar'), ms=$('ms');
+  var scr=document.createElement('div'); scr.className='scr'; bar.appendChild(scr);
+  function showP(p){
+    var dt=new Date(START.getTime()+TOTAL*p);
+    scr.style.display='block'; scr.style.insetInlineStart=(p*100)+'%';
+    $('probe').innerHTML='📅 <b>'+fmt(dt)+'</b><br>انقضى <b>'+ar(p*100,1)+'٪</b> • باقي <b>'+ar(Math.max(0,dayDiff(dt,END)))+'</b> يوم';
+  }
+  function probeAt(x){var r=bar.getBoundingClientRect();showP(Math.max(0,Math.min(1,(r.right-x)/r.width)));}
+  bar.addEventListener('pointerdown',function(e){probeAt(e.clientX);});
+  bar.addEventListener('pointermove',function(e){probeAt(e.clientX);});
+
+  var MON=[], cur=new Date(START.getFullYear(),START.getMonth(),1);
+  while(cur<END){
+    var me0=new Date(cur.getFullYear(),cur.getMonth()+1,1), a0=cur<START?START:new Date(cur), b0=me0>END?END:me0;
+    MON.push({y:cur.getFullYear(),m:cur.getMonth(),a:a0,b:b0,days:dayDiff(a0,b0)});
+    cur=me0;
+  }
+  var cells=[], calKey='', calEl=$('cal'), cdet=$('caldet');
+  function showDay(dt){
+    var i=dayDiff(START,dt), n=i+1, tdy=dayDiff(START,new Date()), full=dt.toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+    if(dayDiff(dt,END)===0){cdet.innerHTML='🚀 <b>'+full+'</b><br>يوم الانطلاق!';return;}
+    var tag=i<tdy?'✅ عدّى':(i===tdy?'📍 النهارده':'⏳ لسه جاي');
+    cdet.innerHTML=tag+'<br><b>'+full+'</b><br>اليوم رقم <b>'+ar(n)+'</b> من ٣٦٥ • بنهايته يبقى انقضى <b>'+ar(n/365*100,1)+'٪</b><br>باقي على الانطلاق <b>'+ar(dayDiff(dt,END))+'</b> يوم';
+  }
+  MON.forEach(function(M){
+    var blk=document.createElement('div');
+    blk.innerHTML='<div class="mt">'+M.a.toLocaleDateString('ar-EG',{month:'long',year:'numeric'})+'</div>';
+    var g=document.createElement('div'); g.className='g';
+    var off=(new Date(M.y,M.m,1).getDay()+1)%7, dim=new Date(M.y,M.m+1,0).getDate(), k;
+    for(k=0;k<off;k++)g.appendChild(document.createElement('i'));
+    for(k=1;k<=dim;k++){
+      var dt=new Date(M.y,M.m,k), inR=dt>=START&&dt<END, isEnd=dayDiff(dt,END)===0;
+      if(!inR&&!isEnd){g.appendChild(document.createElement('i'));continue;}
+      var bt=document.createElement('button'); bt.className='dc'; bt.textContent=isEnd?'⚖️':ar(k);
+      bt.onclick=(function(d){return function(){showDay(d);};})(dt);
+      g.appendChild(bt); cells.push({el:bt,dt:dt,end:isEnd});
+    }
+    blk.appendChild(g); calEl.appendChild(blk);
+  });
+  cells.forEach(function(c){c.star=!c.end&&MS.some(function(x){return dayDiff(c.dt,x.date)===0;});});
+  function paintCal(now){
+    var t=dayDiff(START,now);
+    cells.forEach(function(c){
+      var i=dayDiff(START,c.dt), cl='dc';
+      if(c.end)cl+=' fin'; else if(i<t)cl+=' past'; else if(i===t)cl+=' today';
+      if(c.star)cl+=' star';
+      c.el.className=cl;
+    });
+  }
+  var chEl=$('chart'), mdet=$('mdet'), rows=[];
+  MON.forEach(function(M){
+    var r=document.createElement('button'), cum=(M.b-START)/TOTAL*100;
+    r.className='rw';
+    r.innerHTML='<span class="rn">'+M.a.toLocaleDateString('ar-EG',{month:'long'})+' '+ar(M.y%100)+'</span><span class="rt"><span class="rb" style="width:'+(M.days/31*100)+'%"><span class="rf"></span></span></span><span class="rp">'+ar(cum,0)+'٪</span>';
+    r.onclick=function(){
+      var el=Math.max(0,Math.min(M.days,Math.floor((new Date()-M.a)/DAY)));
+      mdet.innerHTML='<b>'+M.a.toLocaleDateString('ar-EG',{month:'long',year:'numeric'})+'</b><br>'+ar(M.days)+' يوم في الرحلة • عدّى <b>'+ar(el)+'</b> • فاضل <b>'+ar(M.days-el)+'</b><br>بيمثل <b>'+ar(M.days/365*100,1)+'٪</b> من السنة • في آخره يبقى انقضى <b>'+ar(cum,1)+'٪</b>';
+    };
+    chEl.appendChild(r); rows.push({r:r,f:r.querySelector('.rf'),M:M});
+  });
+  function paintChart(now){
+    rows.forEach(function(o){
+      var fr=Math.max(0,Math.min(1,(now-o.M.a)/(o.M.b-o.M.a)));
+      o.f.style.width=(fr*100)+'%';
+      o.r.classList.toggle('cur',now>=o.M.a&&now<o.M.b);
+    });
+  }
   MS.forEach(function(x){
     var mk=document.createElement('div'); mk.className='mk'; mk.style.insetInlineStart=x.p+'%';
     mk.innerHTML='<i>'+ar(x.p)+'٪</i>'; bar.appendChild(mk);
     var c=document.createElement('div'); c.className='m'; c.id='m'+x.p;
     c.innerHTML='<div class="p">'+ar(x.p)+'٪</div><div class="d">'+fmt(x.date)+'</div><div class="s"></div>';
+    c.onclick=function(){if(new Date()>=x.date)boom();showP(x.p/100);};
     ms.appendChild(c);
   });
 
@@ -161,7 +281,10 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
     var now=new Date(), left=END-now, done=left<=0;
     var pct=Math.max(0,Math.min(100,(now-START)/TOTAL*100));
     var L=Math.max(0,left);
-    var d=Math.floor(L/DAY), h=Math.floor(L%DAY/3600000), mi=Math.floor(L%3600000/60000), s=Math.floor(L%60000/1000);
+    var nm=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1), um=nm-now;
+    var d=done?0:Math.round((Date.UTC(END.getFullYear(),END.getMonth(),END.getDate())-Date.UTC(nm.getFullYear(),nm.getMonth(),nm.getDate()))/DAY);
+    if(d<0)d=0;
+    var h=done?0:Math.floor(um/3600000), mi=done?0:Math.floor(um%3600000/60000), s=done?0:Math.floor(um%60000/1000);
     $('days').textContent=ar(d); $('h').textContent=pad(h); $('m').textContent=pad(mi); $('s').textContent=pad(s);
     $('w').textContent=ar(Math.floor(d/7));
     $('pct').textContent=ar(pct,2)+'٪'; $('rem').textContent=ar(100-pct,2)+'٪';
@@ -169,7 +292,7 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
     $('el').textContent=ar(Math.max(0,Math.min(365,Math.floor((now-START)/DAY))));
     $('hrs').textContent=ar(Math.floor(L/3600000));
     $('mon').textContent=ar(L/DAY/30.44,1);
-    $('sun').textContent=ar(Math.ceil(L/DAY));
+    $('sun').textContent=ar(d);
     var from=now<START?START:now;
     $('fri').textContent=ar(done?0:countDays(from,END,5));
     $('wk').textContent=ar(done?0:workDaysLeft(from));
@@ -177,12 +300,16 @@ footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
     MS.forEach(function(x){
       var c=$('m'+x.p), st=c.querySelector('.s'), diff=x.date-now;
       c.className='m';
-      if(diff<=0){c.classList.add('done');st.textContent='✅ تحققت';}
+      if(diff<=0){c.classList.add('done');st.textContent='✅ تحققت';if(x.was===false)boom();x.was=true;}
       else{
-        st.textContent='بعد '+ar(Math.ceil(diff/DAY))+' يوم';
+        st.textContent='بعد '+ar(Math.floor(diff/DAY))+' يوم و '+pad(Math.floor(diff%DAY/3600000))+':'+pad(Math.floor(diff%3600000/60000))+':'+pad(Math.floor(diff%60000/1000));
+        x.was=false;
         if(!nextSet){c.classList.add('next');nextSet=true;}
       }
     });
+    paintChart(now);
+    var tk=now.getFullYear()+'-'+now.getMonth()+'-'+now.getDate();
+    if(tk!==calKey){calKey=tk;paintCal(now);}
     $('party').style.display=done?'block':'none';
   }
   tick(); setInterval(tick,1000);
